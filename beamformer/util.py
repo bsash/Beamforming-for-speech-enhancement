@@ -35,7 +35,7 @@ def get_3dim_spectrum(wav_name, channel_vec, start_point, stop_point, frame, shi
         dump_wav[ii + 1, :] = samples.T    
 
     dump_wav = dump_wav / np.max(np.abs(dump_wav)) * 0.7
-    window = sg.hanning(fftl + 1, 'periodic')[: - 1]
+    window = sg.windows.hann(fftl + 1, 'periodic')[: - 1]
     multi_window = npm.repmat(window, len(channel_vec), 1)    
     st = 0
     ed = frame
